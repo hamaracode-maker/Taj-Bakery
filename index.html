@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Taj Bakery — Where Every Bite Tells a Story</title>
-<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -157,7 +157,7 @@
   .scroll-cue .line{width:1px; height:38px; background:linear-gradient(var(--gold), transparent);}
   @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,8px);}}
 
-  /* ---------- DIVIDER (signature flourish) ---------- */
+  /* ---------- DIVIDER ---------- */
   .flourish{
     display:flex; align-items:center; justify-content:center;
     gap:18px; padding:64px 0 0;
@@ -249,29 +249,10 @@
     transition:transform .5s ease;
   }
   .gallery-item:hover img{transform:scale(1.06);}
-  .gallery-item.empty img{display:none;}
-  .gallery-item.empty{
-    display:flex; flex-direction:column; align-items:center; justify-content:center;
-    gap:10px; border:1px dashed var(--line);
-  }
-  .gallery-item.empty .cam{
-    width:30px; height:30px; color:var(--gold); opacity:.7;
-  }
-  .gallery-item.empty .file{
-    font-size:.68rem; letter-spacing:.06em; color:var(--grey);
-    font-family:'Jost',sans-serif;
-  }
   .gallery-item figcaption{
     position:absolute; left:0; right:0; bottom:0;
     padding:10px 14px; font-size:.78rem; letter-spacing:.08em; text-transform:uppercase;
     color:var(--paper); background:linear-gradient(transparent, rgba(0,0,0,0.65));
-  }
-  .gallery-item.empty figcaption{display:none;}
-  .gallery-hint{
-    text-align:center; margin-top:30px; color:var(--grey); font-size:.85rem; line-height:1.8;
-  }
-  .gallery-hint code{
-    background:var(--ink); color:var(--gold); padding:2px 8px; border-radius:3px; font-size:.8rem;
   }
 
   /* ---------- VISIT / CONTACT ---------- */
@@ -297,7 +278,6 @@
   .visit-row .val{font-size:.98rem; line-height:1.55;}
   .visit-row .val a:hover{color:var(--gold);}
 
-  .hours{margin-top:0;}
   .hours h2{font-size:clamp(2rem,3.4vw,2.6rem); margin-bottom:8px;}
   .hours .eyebrow{margin-bottom:14px;}
   .hours p.lead{color:var(--grey); line-height:1.8; margin-bottom:30px;}
@@ -306,8 +286,6 @@
   .hours-table td{padding:14px 0; font-size:.92rem;}
   .hours-table td:first-child{color:var(--grey); text-transform:uppercase; letter-spacing:.1em; font-size:.72rem;}
   .hours-table td:last-child{text-align:right; font-family:'Cormorant Garamond', serif; font-size:1.15rem;}
-  .hours-table tr.today td{color:var(--ink); font-weight:500;}
-  .hours-table tr.today td:first-child{color:var(--gold);}
 
   /* ---------- FOOTER ---------- */
   footer{
@@ -367,16 +345,12 @@
       <ellipse cx="24" cy="28" rx="16" ry="11" fill="none" stroke="currentColor" stroke-width="1.6"/>
       <path d="M14 22c3-6 17-6 20 0" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
     </symbol>
-    <symbol id="icon-wheat" viewBox="0 0 48 48">
-      <path d="M24 4v40" stroke="currentColor" stroke-width="1.4"/>
-      <path d="M24 10c-4-3-8-1-8 3s6 5 8 2M24 10c4-3 8-1 8 3s-6 5-8 2M24 18c-4-3-8-1-8 3s6 5 8 2M24 18c4-3 8-1 8 3s-6 5-8 2M24 26c-4-3-8-1-8 3s6 5 8 2M24 26c4-3 8-1 8 3s-6 5-8 2" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-    </symbol>
   </defs>
 </svg>
 
 <nav>
   <div class="brand">
-    <img src="images/logo.jpg" alt="Taj Bakery logo">
+    <img src="logo.jpg" alt="Taj Bakery logo">
     <span>Taj Bakery</span>
   </div>
   <ul>
@@ -389,7 +363,7 @@
 </nav>
 
 <header class="hero">
-  <img class="hero-logo" src="images/logo.jpg" alt="Taj Bakery">
+  <img class="hero-logo" src="logo.jpg" alt="Taj Bakery">
   <div class="eyebrow">Gulzar‑e‑Hijri · Karachi</div>
   <h1>Taj <em>Bakery</em></h1>
   <p class="tag">Where every bite tells a story.</p>
@@ -416,7 +390,7 @@
 <section class="story" id="story">
   <div class="wrap story-grid">
     <div class="story-visual">
-      <img src="images/black-forest-cake.jpg" alt="Black Forest Cake at Taj Bakery">
+      <img src="black-forest-cake.jpg" alt="Black Forest Cake at Taj Bakery">
     </div>
     <div class="story-text">
       <div class="eyebrow">Our Story</div>
@@ -496,47 +470,46 @@
     </div>
     <div class="gallery-grid">
       <figure class="gallery-item">
-        <img src="images/bread.jpg" alt="Bread at Taj Bakery">
+        <img src="bread.jpg" alt="Bread at Taj Bakery">
         <figcaption>Bread</figcaption>
       </figure>
       <figure class="gallery-item">
-        <img src="images/cream-rolls.jpg" alt="Cream Rolls at Taj Bakery">
+        <img src="cream-rolls.jpg" alt="Cream Rolls at Taj Bakery">
         <figcaption>Cream Rolls</figcaption>
       </figure>
       <figure class="gallery-item">
-        <img src="images/assorted-pasties.jpg" alt="Assorted Pasties at Taj Bakery">
+        <img src="assorted-pasties.jpg" alt="Assorted Pasties at Taj Bakery">
         <figcaption>Assorted Pasties</figcaption>
       </figure>
       <figure class="gallery-item">
-        <img src="images/creamy-puff.jpg" alt="Creamy Puff at Taj Bakery">
+        <img src="creamy-puff.jpg" alt="Creamy Puff at Taj Bakery">
         <figcaption>Creamy Puff</figcaption>
       </figure>
       <figure class="gallery-item">
-        <img src="images/black-forest-cake.jpg" alt="Black Forest Cake at Taj Bakery">
+        <img src="black-forest-cake.jpg" alt="Black Forest Cake at Taj Bakery">
         <figcaption>Black Forest Cake</figcaption>
       </figure>
       <figure class="gallery-item">
-        <img src="images/pineapple-cake.jpg" alt="Pineapple Cake at Taj Bakery">
+        <img src="pineapple-cake.jpg" alt="Pineapple Cake at Taj Bakery">
         <figcaption>Pineapple Cake</figcaption>
       </figure>
       <figure class="gallery-item">
-        <img src="images/french-hearts.jpg" alt="French Hearts at Taj Bakery">
+        <img src="french-hearts.jpg" alt="French Hearts at Taj Bakery">
         <figcaption>French Hearts</figcaption>
       </figure>
       <figure class="gallery-item">
-        <img src="images/tea-cake.jpg" alt="Tea Cake at Taj Bakery">
+        <img src="tea-cake.jpg" alt="Tea Cake at Taj Bakery">
         <figcaption>Tea Cake</figcaption>
       </figure>
       <figure class="gallery-item">
-        <img src="images/coconut-cream-puff.jpg" alt="Coconut Cream Puff at Taj Bakery">
+        <img src="coconut-cream-puff.jpg" alt="Coconut Cream Puff at Taj Bakery">
         <figcaption>Coconut Cream Puff</figcaption>
       </figure>
       <figure class="gallery-item">
-        <img src="images/jelly-bun.jpg" alt="Jelly Bun at Taj Bakery">
+        <img src="jelly-bun.jpg" alt="Jelly Bun at Taj Bakery">
         <figcaption>Jelly Bun</figcaption>
       </figure>
     </div>
-    
   </div>
 </section>
 
@@ -599,7 +572,7 @@
 <footer>
   <div class="wrap">
     <div class="brand">
-      <img src="images/logo.jpg" alt="Taj Bakery">
+      <img src="logo.jpg" alt="Taj Bakery">
       <h3>Taj Bakery</h3>
     </div>
     <div class="socials">
