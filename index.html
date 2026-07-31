@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taj Bakery — Where Every Bite Tells a Story</title>
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#111110;
+    --paper:#faf7f2;
+    --cream:#f2ede3;
+    --line:#dcd4c4;
+    --gold:#b89b5e;
+    --grey:#6b665d;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Jost', sans-serif;
+    font-weight:400;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.serif{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:600;
+    letter-spacing:.01em;
+  }
+  a{color:inherit; text-decoration:none;}
+  .eyebrow{
+    font-family:'Jost', sans-serif;
+    text-transform:uppercase;
+    letter-spacing:.32em;
+    font-size:.68rem;
+    color:var(--gold);
+    font-weight:500;
+  }
+  .wrap{max-width:1120px; margin:0 auto; padding:0 32px;}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 32px;
+    background:rgba(17,17,16,0.9);
+    backdrop-filter:blur(6px);
+    color:var(--paper);
+    transition:padding .3s ease;
+  }
+  nav .brand{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.15rem; letter-spacing:.06em;
+  }
+  nav .brand img{height:34px; width:34px; border-radius:50%; object-fit:cover;}
+  nav ul{list-style:none; display:flex; gap:36px;}
+  nav ul li a{
+    font-size:.75rem; text-transform:uppercase; letter-spacing:.18em;
+    color:var(--paper); opacity:.8; transition:opacity .25s ease;
+  }
+  nav ul li a:hover{opacity:1; color:var(--gold);}
+  nav .call{
+    border:1px solid var(--gold); padding:8px 18px; font-size:.72rem;
+    text-transform:uppercase; letter-spacing:.18em; color:var(--gold);
+    transition:.25s ease;
+  }
+  nav .call:hover{background:var(--gold); color:var(--ink);}
+  .nav-toggle{display:none; background:none; border:0; color:var(--paper); font-size:1.4rem; cursor:pointer;}
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    position:relative;
+    min-height:100vh;
+    background:var(--ink);
+    color:var(--paper);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center;
+    padding:140px 24px 80px;
+    overflow:hidden;
+  }
+  header.hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(184,155,94,0.10), transparent 60%),
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 3px);
+    pointer-events:none;
+  }
+  .hero-logo{
+    width:150px; height:150px; border-radius:50%;
+    object-fit:cover;
+    border:1px solid rgba(184,155,94,0.5);
+    padding:6px;
+    margin-bottom:34px;
+    animation:fadein-scale 1.1s ease both;
+    position:relative; z-index:2;
+    box-shadow:0 0 0 1px rgba(255,255,255,0.05), 0 30px 60px -20px rgba(0,0,0,0.6);
+  }
+  @keyframes fadein-scale{
+    from{opacity:0; transform:scale(.85) translateY(10px);}
+    to{opacity:1; transform:scale(1) translateY(0);}
+  }
+  .hero .eyebrow{
+    position:relative; z-index:2; margin-bottom:18px;
+    animation:fadein-up 1s .2s ease both;
+  }
+  header.hero h1{
+    position:relative; z-index:2;
+    font-size:clamp(3rem, 8vw, 6rem);
+    line-height:1.02;
+    animation:fadein-up 1s .35s ease both;
+  }
+  header.hero h1 em{
+    font-style:italic; color:var(--gold); font-weight:500;
+  }
+  header.hero p.tag{
+    position:relative; z-index:2;
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:1.3rem;
+    color:#d8d2c4;
+    margin-top:20px;
+    animation:fadein-up 1s .5s ease both;
+  }
+  @keyframes fadein-up{
+    from{opacity:0; transform:translateY(18px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+  .hero-cta{
+    position:relative; z-index:2;
+    margin-top:44px;
+    display:flex; gap:18px; flex-wrap:wrap; justify-content:center;
+    animation:fadein-up 1s .65s ease both;
+  }
+  .btn{
+    padding:14px 34px;
+    font-size:.75rem; letter-spacing:.2em; text-transform:uppercase;
+    border:1px solid var(--gold);
+    transition:.3s ease;
+  }
+  .btn.solid{background:var(--gold); color:var(--ink);}
+  .btn.solid:hover{background:transparent; color:var(--gold);}
+  .btn.outline{color:var(--paper); border-color:rgba(255,255,255,0.35);}
+  .btn.outline:hover{border-color:var(--gold); color:var(--gold);}
+
+  .scroll-cue{
+    position:absolute; bottom:36px; left:50%; transform:translateX(-50%);
+    z-index:2; display:flex; flex-direction:column; align-items:center; gap:8px;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  .scroll-cue span{font-size:.62rem; letter-spacing:.28em; text-transform:uppercase; color:#a89f8c;}
+  .scroll-cue .line{width:1px; height:38px; background:linear-gradient(var(--gold), transparent);}
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,8px);}}
+
+  /* ---------- DIVIDER (signature flourish) ---------- */
+  .flourish{
+    display:flex; align-items:center; justify-content:center;
+    gap:18px; padding:64px 0 0;
+  }
+  .flourish svg{width:120px; height:auto; color:var(--gold);}
+  .flourish .diamond{width:7px; height:7px; background:var(--gold); transform:rotate(45deg);}
+
+  /* ---------- SECTION HEAD ---------- */
+  .section-head{text-align:center; max-width:640px; margin:0 auto 56px;}
+  .section-head .eyebrow{margin-bottom:14px;}
+  .section-head h2{font-size:clamp(2.1rem,4vw,3rem); line-height:1.1;}
+  .section-head p{color:var(--grey); margin-top:16px; font-size:1rem; line-height:1.7;}
+
+  section{padding:110px 0;}
+
+  /* ---------- STORY ---------- */
+  .story{background:var(--paper);}
+  .story-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:center;
+  }
+  .story-visual{
+    position:relative; aspect-ratio:1/1; max-width:380px; margin:0 auto;
+    border-radius:50%; background:var(--ink);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .story-visual img{width:78%; height:78%; object-fit:cover; border-radius:50%;}
+  .story-visual::after{
+    content:""; position:absolute; inset:-14px; border:1px solid var(--line); border-radius:50%;
+  }
+  .story-text .eyebrow{margin-bottom:16px;}
+  .story-text h2{font-size:clamp(2rem,3.4vw,2.7rem); margin-bottom:22px; line-height:1.15;}
+  .story-text p{color:var(--grey); line-height:1.85; font-size:1.02rem; margin-bottom:16px;}
+  .story-stats{display:flex; gap:44px; margin-top:34px;}
+  .story-stats div h3{font-size:2.1rem; color:var(--ink);}
+  .story-stats div span{font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--grey);}
+
+  /* ---------- MENU ---------- */
+  .menu{background:var(--ink); color:var(--paper);}
+  .menu .section-head p{color:#b9b2a2;}
+  .menu-grid{
+    display:grid; grid-template-columns:repeat(2, 1fr); gap:0 60px;
+    max-width:920px; margin:0 auto;
+  }
+  .menu-item{
+    display:flex; align-items:baseline;
+    padding:22px 0; border-bottom:1px solid rgba(255,255,255,0.12);
+    gap:16px;
+  }
+  .m-ico{width:26px; height:26px; flex-shrink:0; color:var(--gold); align-self:center;}
+  .menu-item .name{font-family:'Cormorant Garamond', serif; font-size:1.3rem; font-weight:500;}
+  .menu-item .name small{
+    display:block; font-family:'Jost',sans-serif; font-size:.72rem;
+    letter-spacing:.08em; color:#a89f8c; margin-top:4px; font-weight:300;
+  }
+  .menu-item .dots{flex:1; border-bottom:1px dotted rgba(255,255,255,0.25); position:relative; top:-6px; margin:0 4px;}
+  .menu-note{
+    text-align:center; margin-top:52px; color:#a89f8c; font-size:.85rem;
+    letter-spacing:.02em;
+  }
+
+  /* ---------- GALLERY STRIP ---------- */
+  .strip{
+    background:var(--cream);
+    padding:26px 0;
+    overflow:hidden;
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+  }
+  .strip-track{
+    display:flex; gap:60px; white-space:nowrap;
+    animation:marquee 26s linear infinite;
+    font-family:'Cormorant Garamond', serif; font-style:italic;
+    font-size:1.15rem; color:var(--grey);
+  }
+  .strip-track span{opacity:.85;}
+  .strip-track span.gold{color:var(--gold); font-style:normal; font-family:'Jost',sans-serif; font-size:.7rem; letter-spacing:.2em; text-transform:uppercase;}
+  @keyframes marquee{from{transform:translateX(0);} to{transform:translateX(-50%);}}
+
+  /* ---------- GALLERY ---------- */
+  .gallery{background:var(--cream);}
+  .gallery-grid{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(210px, 1fr)); gap:16px;
+  }
+  .gallery-item{
+    position:relative; aspect-ratio:4/3; overflow:hidden;
+    background:var(--paper); border:1px solid var(--line);
+  }
+  .gallery-item img{
+    width:100%; height:100%; object-fit:cover; display:block;
+    transition:transform .5s ease;
+  }
+  .gallery-item:hover img{transform:scale(1.06);}
+  .gallery-item.empty img{display:none;}
+  .gallery-item.empty{
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:10px; border:1px dashed var(--line);
+  }
+  .gallery-item.empty .cam{
+    width:30px; height:30px; color:var(--gold); opacity:.7;
+  }
+  .gallery-item.empty .file{
+    font-size:.68rem; letter-spacing:.06em; color:var(--grey);
+    font-family:'Jost',sans-serif;
+  }
+  .gallery-item figcaption{
+    position:absolute; left:0; right:0; bottom:0;
+    padding:10px 14px; font-size:.78rem; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--paper); background:linear-gradient(transparent, rgba(0,0,0,0.65));
+  }
+  .gallery-item.empty figcaption{display:none;}
+  .gallery-hint{
+    text-align:center; margin-top:30px; color:var(--grey); font-size:.85rem; line-height:1.8;
+  }
+  .gallery-hint code{
+    background:var(--ink); color:var(--gold); padding:2px 8px; border-radius:3px; font-size:.8rem;
+  }
+
+  /* ---------- VISIT / CONTACT ---------- */
+  .visit{background:var(--paper);}
+  .visit-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:start;
+  }
+  .visit-card{
+    background:var(--ink); color:var(--paper);
+    padding:52px 44px; position:relative;
+  }
+  .visit-card::before{
+    content:""; position:absolute; top:14px; left:14px; right:14px; bottom:14px;
+    border:1px solid rgba(184,155,94,0.35); pointer-events:none;
+  }
+  .visit-card h3{font-size:1.7rem; margin-bottom:26px;}
+  .visit-row{
+    display:flex; gap:16px; padding:16px 0; border-bottom:1px solid rgba(255,255,255,0.1);
+  }
+  .visit-row:last-child{border-bottom:0;}
+  .visit-row .ico{color:var(--gold); font-size:1.1rem; width:22px; flex-shrink:0; margin-top:2px;}
+  .visit-row .label{font-size:.68rem; letter-spacing:.18em; text-transform:uppercase; color:#a89f8c; margin-bottom:4px;}
+  .visit-row .val{font-size:.98rem; line-height:1.55;}
+  .visit-row .val a:hover{color:var(--gold);}
+
+  .hours{margin-top:0;}
+  .hours h2{font-size:clamp(2rem,3.4vw,2.6rem); margin-bottom:8px;}
+  .hours .eyebrow{margin-bottom:14px;}
+  .hours p.lead{color:var(--grey); line-height:1.8; margin-bottom:30px;}
+  .hours-table{width:100%; border-collapse:collapse;}
+  .hours-table tr{border-bottom:1px solid var(--line);}
+  .hours-table td{padding:14px 0; font-size:.92rem;}
+  .hours-table td:first-child{color:var(--grey); text-transform:uppercase; letter-spacing:.1em; font-size:.72rem;}
+  .hours-table td:last-child{text-align:right; font-family:'Cormorant Garamond', serif; font-size:1.15rem;}
+  .hours-table tr.today td{color:var(--ink); font-weight:500;}
+  .hours-table tr.today td:first-child{color:var(--gold);}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--ink); color:#8f8a7c;
+    padding:64px 0 30px; text-align:center;
+  }
+  footer .brand{
+    display:flex; flex-direction:column; align-items:center; gap:14px; margin-bottom:30px;
+  }
+  footer .brand img{width:56px; height:56px; border-radius:50%; object-fit:cover;}
+  footer .brand h3{color:var(--paper); font-size:1.4rem; letter-spacing:.05em;}
+  footer .socials{display:flex; gap:22px; justify-content:center; margin-bottom:34px;}
+  footer .socials a{
+    border:1px solid rgba(255,255,255,0.2); width:40px; height:40px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; font-size:.85rem;
+    transition:.25s ease;
+  }
+  footer .socials a:hover{border-color:var(--gold); color:var(--gold);}
+  footer .fine{font-size:.75rem; letter-spacing:.04em; border-top:1px solid rgba(255,255,255,0.08); padding-top:26px;}
+  footer .fine em{color:var(--gold); font-style:normal;}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:860px){
+    nav ul, nav .call{display:none;}
+    .nav-toggle{display:block;}
+    .story-grid, .visit-grid{grid-template-columns:1fr; gap:50px;}
+    .menu-grid{grid-template-columns:1fr;}
+    section{padding:80px 0;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="icon-bread" viewBox="0 0 48 48">
+      <path d="M6 26c0-10 7-17 18-17s18 7 18 17c0 4-2 6-2 6H8s-2-2-2-6z" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M8 32h32l-2 8H10l-2-8z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      <path d="M16 20c2-3 4-4 8-4s6 1 8 4" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="icon-croissant" viewBox="0 0 48 48">
+      <path d="M10 30c-3-8 2-18 12-20 2 3 1 6-1 8 4-1 8 1 9 5 3-1 6 1 7 5-6 8-16 12-27 2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-cake" viewBox="0 0 48 48">
+      <path d="M8 24l16-10 16 10v12H8V24z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      <path d="M8 24c4 3 8 3 16 0s12-3 16 0" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      <path d="M24 14V8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+      <circle cx="24" cy="6" r="1.6" fill="currentColor"/>
+    </symbol>
+    <symbol id="icon-puff" viewBox="0 0 48 48">
+      <path d="M24 12c6 0 10 5 9 10 5 1 8 5 6 10-3 6-11 8-15 4-4 4-12 2-15-4-2-5 1-9 6-10-1-5 3-10 9-10z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-bun" viewBox="0 0 48 48">
+      <ellipse cx="24" cy="28" rx="16" ry="11" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M14 22c3-6 17-6 20 0" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="icon-wheat" viewBox="0 0 48 48">
+      <path d="M24 4v40" stroke="currentColor" stroke-width="1.4"/>
+      <path d="M24 10c-4-3-8-1-8 3s6 5 8 2M24 10c4-3 8-1 8 3s-6 5-8 2M24 18c-4-3-8-1-8 3s6 5 8 2M24 18c4-3 8-1 8 3s-6 5-8 2M24 26c-4-3-8-1-8 3s6 5 8 2M24 26c4-3 8-1 8 3s-6 5-8 2" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+</svg>
+
+<nav>
+  <div class="brand">
+    <img src="images/logo.jpg" alt="Taj Bakery logo">
+    <span>Taj Bakery</span>
+  </div>
+  <ul>
+    <li><a href="#story">Our Story</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#visit">Visit</a></li>
+  </ul>
+  <a class="call" href="tel:03192886716">Call: 0319 2886716</a>
+</nav>
+
+<header class="hero">
+  <img class="hero-logo" src="images/logo.jpg" alt="Taj Bakery">
+  <div class="eyebrow">Gulzar‑e‑Hijri · Karachi</div>
+  <h1>Taj <em>Bakery</em></h1>
+  <p class="tag">Where every bite tells a story.</p>
+  <div class="hero-cta">
+    <a class="btn solid" href="#menu">View Menu</a>
+    <a class="btn outline" href="tel:03192886716">Order Now</a>
+  </div>
+  <div class="scroll-cue">
+    <span>Scroll</span>
+    <div class="line"></div>
+  </div>
+</header>
+
+<div class="flourish">
+  <svg viewBox="0 0 200 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 15 C 40 0, 60 30, 90 15" stroke="currentColor" stroke-width="1"/>
+  </svg>
+  <div class="diamond"></div>
+  <svg viewBox="0 0 200 30" fill="none" xmlns="http://www.w3.org/2000/svg" style="transform:scaleX(-1)">
+    <path d="M0 15 C 40 0, 60 30, 90 15" stroke="currentColor" stroke-width="1"/>
+  </svg>
+</div>
+
+<section class="story" id="story">
+  <div class="wrap story-grid">
+    <div class="story-visual">
+      <img src="images/black-forest-cake.jpg" alt="Black Forest Cake at Taj Bakery">
+    </div>
+    <div class="story-text">
+      <div class="eyebrow">Our Story</div>
+      <h2>Baked fresh, served with care, every single day.</h2>
+      <p>Tucked into Gulzar‑e‑Hijri, Taj Bakery has become the neighbourhood's trusted stop for bread, pastries and celebration cakes. Everything on the counter is baked in small batches, the same day it's sold.</p>
+      <p>From a loaf for the morning table to a Black Forest cake for a birthday, we treat every order — big or small — as something worth doing properly.</p>
+      <div class="story-stats">
+        <div>
+          <h3>4.4<span style="font-size:1.1rem;">/5</span></h3>
+          <span>Google Rating</span>
+        </div>
+        <div>
+          <h3>Daily</h3>
+          <span>Fresh Bakes</span>
+        </div>
+        <div>
+          <h3>10+</h3>
+          <span>Signature Items</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="menu" id="menu">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Menu Highlights</div>
+      <h2>From the Oven & the Counter</h2>
+      <p>A few of the favourites our regulars keep coming back for.</p>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-item"><svg class="m-ico"><use href="#icon-bread"/></svg><div class="name">Bread<small>Fresh loaf, baked daily</small></div><div class="dots"></div></div>
+      <div class="menu-item"><svg class="m-ico"><use href="#icon-bun"/></svg><div class="name">Cream Rolls<small>Soft, filled with fresh cream</small></div><div class="dots"></div></div>
+      <div class="menu-item"><svg class="m-ico"><use href="#icon-croissant"/></svg><div class="name">Assorted Pasties<small>Savoury, flaky & golden</small></div><div class="dots"></div></div>
+      <div class="menu-item"><svg class="m-ico"><use href="#icon-puff"/></svg><div class="name">Creamy Puff<small>Light choux, cream‑filled</small></div><div class="dots"></div></div>
+      <div class="menu-item"><svg class="m-ico"><use href="#icon-cake"/></svg><div class="name">Black Forest Cake<small>Chocolate, cherry & cream</small></div><div class="dots"></div></div>
+      <div class="menu-item"><svg class="m-ico"><use href="#icon-cake"/></svg><div class="name">Pineapple Cake<small>Classic, light & fruity</small></div><div class="dots"></div></div>
+      <div class="menu-item"><svg class="m-ico"><use href="#icon-croissant"/></svg><div class="name">French Hearts<small>Delicate puff pastry</small></div><div class="dots"></div></div>
+      <div class="menu-item"><svg class="m-ico"><use href="#icon-bread"/></svg><div class="name">Tea Cake<small>A perfect chai companion</small></div><div class="dots"></div></div>
+      <div class="menu-item"><svg class="m-ico"><use href="#icon-puff"/></svg><div class="name">Coconut Cream Puff<small>Toasted coconut & cream</small></div><div class="dots"></div></div>
+      <div class="menu-item"><svg class="m-ico"><use href="#icon-bun"/></svg><div class="name">Jelly Bun<small>Soft bun, sweet jelly centre</small></div><div class="dots"></div></div>
+    </div>
+    <p class="menu-note">Full menu & prices available by phone · Custom cakes on order</p>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="strip-track">
+    <span class="gold">Taj Bakery</span>
+    <span>Fresh Bread</span>
+    <span class="gold">✦</span>
+    <span>Celebration Cakes</span>
+    <span class="gold">✦</span>
+    <span>Pastries & Puffs</span>
+    <span class="gold">✦</span>
+    <span>Baked Daily</span>
+    <span class="gold">✦</span>
+    <span class="gold">Taj Bakery</span>
+    <span>Fresh Bread</span>
+    <span class="gold">✦</span>
+    <span>Celebration Cakes</span>
+    <span class="gold">✦</span>
+    <span>Pastries & Puffs</span>
+    <span class="gold">✦</span>
+    <span>Baked Daily</span>
+    <span class="gold">✦</span>
+  </div>
+</div>
+
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Gallery</div>
+      <h2>A Taste of the Counter</h2>
+      <p>Fresh from our display counter — baked daily at Taj Bakery.</p>
+    </div>
+    <div class="gallery-grid">
+      <figure class="gallery-item">
+        <img src="images/bread.jpg" alt="Bread at Taj Bakery">
+        <figcaption>Bread</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <img src="images/cream-rolls.jpg" alt="Cream Rolls at Taj Bakery">
+        <figcaption>Cream Rolls</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <img src="images/assorted-pasties.jpg" alt="Assorted Pasties at Taj Bakery">
+        <figcaption>Assorted Pasties</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <img src="images/creamy-puff.jpg" alt="Creamy Puff at Taj Bakery">
+        <figcaption>Creamy Puff</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <img src="images/black-forest-cake.jpg" alt="Black Forest Cake at Taj Bakery">
+        <figcaption>Black Forest Cake</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <img src="images/pineapple-cake.jpg" alt="Pineapple Cake at Taj Bakery">
+        <figcaption>Pineapple Cake</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <img src="images/french-hearts.jpg" alt="French Hearts at Taj Bakery">
+        <figcaption>French Hearts</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <img src="images/tea-cake.jpg" alt="Tea Cake at Taj Bakery">
+        <figcaption>Tea Cake</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <img src="images/coconut-cream-puff.jpg" alt="Coconut Cream Puff at Taj Bakery">
+        <figcaption>Coconut Cream Puff</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <img src="images/jelly-bun.jpg" alt="Jelly Bun at Taj Bakery">
+        <figcaption>Jelly Bun</figcaption>
+      </figure>
+    </div>
+    
+  </div>
+</section>
+
+<section class="visit" id="visit">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Visit Us</div>
+      <h2>Find Us in Gulzar‑e‑Hijri</h2>
+    </div>
+    <div class="visit-grid">
+      <div class="visit-card">
+        <h3>Get in Touch</h3>
+        <div class="visit-row">
+          <div class="ico">☎</div>
+          <div>
+            <div class="label">Phone</div>
+            <div class="val"><a href="tel:03192886716">0319 2886716</a></div>
+          </div>
+        </div>
+        <div class="visit-row">
+          <div class="ico">⚑</div>
+          <div>
+            <div class="label">Address</div>
+            <div class="val">W3VW+8CR, Block 4A, Gulzar‑e‑Hijri, Scheme 33, Karachi</div>
+          </div>
+        </div>
+        <div class="visit-row">
+          <div class="ico">⏱</div>
+          <div>
+            <div class="label">Service</div>
+            <div class="val">Takeaway available</div>
+          </div>
+        </div>
+        <div class="visit-row">
+          <div class="ico">★</div>
+          <div>
+            <div class="label">Rating</div>
+            <div class="val">4.4 out of 5 · 51 Google reviews</div>
+          </div>
+        </div>
+      </div>
+      <div class="hours">
+        <div class="eyebrow">Timings</div>
+        <h2>Open Daily</h2>
+        <p class="lead">We're open every day until midnight — swing by after dinner for something sweet.</p>
+        <table class="hours-table">
+          <tr><td>Monday</td><td>10 am – 12 am</td></tr>
+          <tr><td>Tuesday</td><td>10 am – 12 am</td></tr>
+          <tr><td>Wednesday</td><td>10 am – 12 am</td></tr>
+          <tr><td>Thursday</td><td>10 am – 12 am</td></tr>
+          <tr><td>Friday</td><td>10 am – 12 am</td></tr>
+          <tr><td>Saturday</td><td>10 am – 12 am</td></tr>
+          <tr><td>Sunday</td><td>10 am – 12 am</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="brand">
+      <img src="images/logo.jpg" alt="Taj Bakery">
+      <h3>Taj Bakery</h3>
+    </div>
+    <div class="socials">
+      <a href="tel:03192886716" title="Call">☎</a>
+      <a href="#menu" title="Menu">⁙</a>
+      <a href="#visit" title="Location">⚑</a>
+    </div>
+    <div class="fine">
+      © 2026 Taj Bakery, Gulzar‑e‑Hijri, Karachi · <em>Where every bite tells a story</em>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
